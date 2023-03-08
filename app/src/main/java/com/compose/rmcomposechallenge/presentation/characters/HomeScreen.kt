@@ -90,7 +90,7 @@ fun RickAndMortyCharacter(character: Result) {
                 val statusString = "Status: ${character.status}"
                 Text(
                     text = AnnotatedString(text = statusString, spanStyles = statusStringStyle),
-                    modifier = Modifier.padding(start = 8.dp, top = 4.dp)
+                    modifier = Modifier.padding(start = 8.dp, top = 8.dp)
                 )
 
                 val speciesStringStyle = listOf( AnnotatedString.Range(
