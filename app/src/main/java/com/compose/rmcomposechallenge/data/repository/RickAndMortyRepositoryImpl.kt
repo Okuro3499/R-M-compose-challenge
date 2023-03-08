@@ -15,7 +15,8 @@ class RickAndMortyRepositoryImpl(
     override fun getAllCharacters(): Flow<ResultWrapper<Characters>> = flow {
 
        // try {
-            emit(ResultWrapper.success(apiService.getCharactersList().toCharacters()))
+        val remoteData = apiService.getCharactersList().toCharacters()
+        emit(ResultWrapper.success(remoteData))
         //}catch (e: IOException){
           //  emit(ResultWrapper.failure(e))
         //}catch (e: HttpException){
