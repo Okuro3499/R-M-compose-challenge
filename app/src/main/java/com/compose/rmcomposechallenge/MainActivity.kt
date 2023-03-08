@@ -1,7 +1,6 @@
 package com.compose.rmcomposechallenge
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -24,13 +23,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.compose.rmcomposechallenge.presentation.characters.CharactersViewModel
+import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    private val viewModel: CharactersViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,18 +93,7 @@ fun Navigation(navController:NavHostController){
 }
 
 
-@Composable
-fun HomeScreen(){
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Cyan),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Home Screen")
 
-    }
-}
 
 @Composable
 fun MyFilesScreen(){
