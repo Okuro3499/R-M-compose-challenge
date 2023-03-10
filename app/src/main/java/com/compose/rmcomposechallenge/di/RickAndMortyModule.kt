@@ -7,6 +7,7 @@ import com.compose.rmcomposechallenge.data.network.RickAndMortyService
 import com.compose.rmcomposechallenge.data.repository.RickAndMortyRepositoryImpl
 import com.compose.rmcomposechallenge.domain.repository.RickAndMortyRepository
 import com.compose.rmcomposechallenge.domain.usecases.GetAllCharacters
+import com.compose.rmcomposechallenge.domain.usecases.GetCharacterDetails
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -31,6 +32,14 @@ object RickAndMortyModule {
         repository: RickAndMortyRepository
     ): GetAllCharacters{
         return GetAllCharacters(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun providesgetCharacterDetailsUseCases(
+        repository: RickAndMortyRepository
+    ): GetCharacterDetails {
+        return GetCharacterDetails(repository)
     }
 
     @Provides
