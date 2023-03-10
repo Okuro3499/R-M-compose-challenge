@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.magnifier
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -15,21 +13,19 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.compose.rmcomposechallenge.presentation.characters.CharactersScreen
 import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
 import com.compose.rmcomposechallenge.presentation.characters_details.CharacterDetailScreen
 import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -50,7 +46,7 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 BottomNavItem(
                                     name = "Files",
-                                    route =Screens.MyFilesScreen.route,
+                                    route =Screens.CharactersScreen.route,
                                     icon = Icons.Default.List,
                                     badgeCount = 56
                                 ),
@@ -83,8 +79,8 @@ fun Navigation(navController:NavHostController){
             HomeScreen(navController = navController)
 
         }
-        composable(Screens.MyFilesScreen.route){
-            MyFilesScreen()
+        composable(Screens.CharactersScreen.route){
+            CharactersScreen(navController = navController)
 
         }
 
@@ -103,19 +99,7 @@ fun Navigation(navController:NavHostController){
 
 
 
-@Composable
-fun MyFilesScreen(){
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BlackBackground),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Downloaded files")
 
-        }
-
-    }
 
 @Composable
 fun AboutScreen(){
