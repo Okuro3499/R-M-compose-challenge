@@ -3,26 +3,70 @@ package com.compose.rmcomposechallenge
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.compose.rmcomposechallenge.presentation.characters.CharactersViewModel
+import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
+import com.compose.rmcomposechallenge.presentation.characters_details.CharacterDetailScreen
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             RMcomposechallengeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
+                val navController = rememberNavController()
+                Scaffold(
+                    bottomBar ={
+                        BottomNavigationBar(
+                            items = listOf(
+                                BottomNavItem(
+                                    name = "Home",
+                                    route = Screens.HomeScreen.route,
+                                    icon = Icons.Default.Home
+                                ),
+                                BottomNavItem(
+                                    name = "Files",
+                                    route =Screens.MyFilesScreen.route,
+                                    icon = Icons.Default.List,
+                                    badgeCount = 56
+                                ),
+                                BottomNavItem(
+                                    name = "Settings",
+                                    route = Screens.SettingsScreen.route,
+                                    icon = Icons.Default.Settings
+                                )
+                            ) ,
+                            navController = navController,
+                            onItemClick ={
+                                navController.navigate(it.route)
+                            }
+                        )
+                    }
+                ) { padding ->
+                    Column(modifier = Modifier.padding(padding)) {
+                        Navigation(navController = navController)
+                    }
                 }
             }
         }
@@ -30,14 +74,54 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun Navigation(navController:NavHostController){
+    NavHost(navController = navController, startDestination = Screens.HomeScreen.route){
+        composable(Screens.HomeScreen.route){
+            HomeScreen(navController = navController)
+
+        }
+        composable(Screens.MyFilesScreen.route){
+            MyFilesScreen()
+
+        }
+        composable(Screens.SettingsScreen.route){
+            SettingsScreen()
+        }
+
+        composable(Screens.CharacterDetailScreen.route + "/{characterId}") {
+            CharacterDetailScreen()
+        }
+    }
+
+
 }
 
-@Preview(showBackground = true)
+
+
+
 @Composable
-fun DefaultPreview() {
-    RMcomposechallengeTheme {
-        Greeting("Android")
+fun MyFilesScreen(){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Yellow),
+        contentAlignment = Alignment.Center
+    ) {
+
+        Text(text = "Downloaded files" )
+
+
     }
 }
+@Composable
+fun SettingsScreen(){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Transparent),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(text = "Settings Screen")
+    }
+}
+
