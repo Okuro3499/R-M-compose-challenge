@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,12 +19,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.compose.rmcomposechallenge.Screens
 import com.compose.rmcomposechallenge.domain.models.Result
 import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    navController: NavController
+){
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -39,22 +44,29 @@ fun HomeScreen(){
             state.characters?.results?.let {
                 items(it.size) {i ->
                     val character = it[i]
-                    RickAndMortyCharacter(character)
+                    RickAndMortyCharacter(
+                        character,
+                        navController
+                    )
                 }
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun RickAndMortyCharacter(character: Result) {
+fun RickAndMortyCharacter(character: Result, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
             .clip(RoundedCornerShape(10)),
         backgroundColor = Color.LightGray,
-        elevation = 4.dp
+        elevation = 4.dp,
+        onClick = {
+            navController.navigate(Screens.CharacterDetailScreen.route + "/${character.id}")
+        }
     ) {
         Row(
             modifier = Modifier

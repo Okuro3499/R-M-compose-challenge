@@ -24,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.compose.rmcomposechallenge.presentation.characters.CharactersViewModel
 import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
+import com.compose.rmcomposechallenge.presentation.characters_details.CharacterDetailScreen
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -76,7 +77,7 @@ class MainActivity : ComponentActivity() {
 fun Navigation(navController:NavHostController){
     NavHost(navController = navController, startDestination = Screens.HomeScreen.route){
         composable(Screens.HomeScreen.route){
-            HomeScreen()
+            HomeScreen(navController = navController)
 
         }
         composable(Screens.MyFilesScreen.route){
@@ -85,7 +86,10 @@ fun Navigation(navController:NavHostController){
         }
         composable(Screens.SettingsScreen.route){
             SettingsScreen()
+        }
 
+        composable(Screens.CharacterDetailScreen.route + "/{characterId}") {
+            CharacterDetailScreen()
         }
     }
 
