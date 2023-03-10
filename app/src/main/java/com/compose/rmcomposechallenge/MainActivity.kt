@@ -4,11 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.magnifier
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -18,13 +16,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.compose.rmcomposechallenge.presentation.characters.CharactersViewModel
 import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
 import com.compose.rmcomposechallenge.presentation.characters_details.CharacterDetailScreen
+import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -52,8 +55,8 @@ class MainActivity : ComponentActivity() {
                                     badgeCount = 56
                                 ),
                                 BottomNavItem(
-                                    name = "Settings",
-                                    route = Screens.SettingsScreen.route,
+                                    name = "About",
+                                    route = Screens.AboutScreen.route,
                                     icon = Icons.Default.Settings
                                 )
                             ) ,
@@ -84,8 +87,9 @@ fun Navigation(navController:NavHostController){
             MyFilesScreen()
 
         }
-        composable(Screens.SettingsScreen.route){
-            SettingsScreen()
+
+        composable(Screens.AboutScreen.route) {
+            AboutScreen()
         }
 
         composable(Screens.CharacterDetailScreen.route + "/{characterId}") {
@@ -104,24 +108,53 @@ fun MyFilesScreen(){
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Yellow),
+            .background(BlackBackground),
         contentAlignment = Alignment.Center
     ) {
+        Text(text = "Downloaded files")
 
-        Text(text = "Downloaded files" )
-
+        }
 
     }
-}
+
 @Composable
-fun SettingsScreen(){
+fun AboutScreen(){
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Transparent),
+            .background(BlackBackground),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Settings Screen")
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+        ) {
+            Text(stringResource(id = R.string.created),
+                style = MaterialTheme.typography.subtitle2
+            )
+            Text(stringResource(id = R.string.gideon),
+                style = MaterialTheme.typography.h6
+
+
+            )
+            Text(stringResource(id = R.string.Dan),
+                style = MaterialTheme.typography.h6
+            )
+            Text(stringResource(id = R.string.Anwar),
+                style = MaterialTheme.typography.h6
+            )
+            Text(stringResource(id = R.string.Abdul),
+                style = MaterialTheme.typography.h6
+            )
+            
+            Spacer(modifier = Modifier.height(15.dp))
+            Text(stringResource(id = R.string.Api),
+                style = MaterialTheme.typography.subtitle2
+            )
+            Text(stringResource(id = R.string.api),
+                style = MaterialTheme.typography.h6
+            )
+        }
     }
 }
 
