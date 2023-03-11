@@ -7,4 +7,6 @@
     <string name="Abdul">Abdul</string>
     <string name="Api">Api:</string>
     <string name="api">https://rickandmortyapi.com/</string>
+    <string name="title">Character Details</string>
+    <string name="charactertitle">Saved Characters</string>
 </resources>
