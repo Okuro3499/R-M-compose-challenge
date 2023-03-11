@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">RMcomposechallenge</string>
+    <string name="created">Created By:</string>
+    <string name="gideon">Gideon</string>
+    <string name="Dan">Dan</string>
+    <string name="Anwar">Anwar</string>
+    <string name="Abdul">Abdul</string>
+    <string name="Api">Api:</string>
+    <string name="api">https://rickandmortyapi.com/</string>
+    <string name="title">Character Details</string>
+    <string name="charactertitle">Saved Characters</string>
 </resources>
