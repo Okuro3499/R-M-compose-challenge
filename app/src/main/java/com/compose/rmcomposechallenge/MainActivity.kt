@@ -10,11 +10,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,6 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.compose.rmcomposechallenge.presentation.characters.CharactersScreen
 import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
 import com.compose.rmcomposechallenge.presentation.characters_details.CharacterDetailScreen
+import com.compose.rmcomposechallenge.presentation.characters_details.CharacterDetailViewModel
 import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,20 +43,21 @@ class MainActivity : ComponentActivity() {
                         BottomNavigationBar(
                             items = listOf(
                                 BottomNavItem(
-                                    name = "Home",
-                                    route = Screens.HomeScreen.route,
-                                    icon = Icons.Default.Home
-                                ),
-                                BottomNavItem(
-                                    name = "Files",
+                                    name = "Characters",
                                     route =Screens.CharactersScreen.route,
+                                    icon = Icons.Default.Home,
+
+                                    ),
+                                BottomNavItem(
+                                    name = "Saved Files",
+                                    route = Screens.SavedCharactersScreen.route,
                                     icon = Icons.Default.List,
                                     badgeCount = 56
                                 ),
                                 BottomNavItem(
                                     name = "About",
                                     route = Screens.AboutScreen.route,
-                                    icon = Icons.Default.Settings
+                                    icon = Icons.Rounded.Info
                                 )
                             ) ,
                             navController = navController,
@@ -74,8 +78,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Navigation(navController:NavHostController){
-    NavHost(navController = navController, startDestination = Screens.HomeScreen.route){
-        composable(Screens.HomeScreen.route){
+    NavHost(navController = navController, startDestination = Screens.CharactersScreen.route){
+        composable(Screens.SavedCharactersScreen.route){
             HomeScreen(navController = navController)
 
         }
@@ -89,7 +93,10 @@ fun Navigation(navController:NavHostController){
         }
 
         composable(Screens.CharacterDetailScreen.route + "/{characterId}") {
-            CharacterDetailScreen()
+            val viewModel = hiltViewModel<CharacterDetailViewModel>()
+            CharacterDetailScreen(
+                 navController = navController
+            )
         }
     }
 

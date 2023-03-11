@@ -31,6 +31,9 @@ val Typography = Typography(
         color = Color.White
 
 ),
+
+
+
     subtitle2 = TextStyle(
         fontWeight = FontWeight.Bold,
         fontFamily = abfont,
@@ -39,12 +42,17 @@ val Typography = Typography(
     ),
 // Set of Material typography styles to start with
 
-    body1 = TextStyle(
+    h5 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
-    )
-
+    ),
+     h4 =  TextStyle(
+         fontSize = 18.sp,
+         fontFamily = afont,
+         fontWeight = FontWeight.Bold,
+         color = Color.White
+)
     /* Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,

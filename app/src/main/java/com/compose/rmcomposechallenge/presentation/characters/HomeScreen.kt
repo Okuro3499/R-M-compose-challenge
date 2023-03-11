@@ -1,5 +1,6 @@
 package com.compose.rmcomposechallenge.presentation.characters
 
+import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -21,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.compose.rmcomposechallenge.R
 import com.compose.rmcomposechallenge.Screens
 import com.compose.rmcomposechallenge.domain.models.Result
 import com.compose.rmcomposechallenge.ui.theme.BlackBackground
@@ -29,6 +32,7 @@ import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 fun HomeScreen(
     navController: NavController
 ){
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -40,6 +44,8 @@ fun HomeScreen(
 
         val state = viewModel.state.value
 
+
+
         LazyColumn {
             state.characters?.results?.let {
                 items(it.size) {i ->
@@ -48,11 +54,14 @@ fun HomeScreen(
                         character,
                         navController
                     )
+
                 }
             }
         }
     }
 }
+
+
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
