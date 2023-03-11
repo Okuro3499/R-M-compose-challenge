@@ -23,27 +23,50 @@ val afont = FontFamily(
 
     )
 )
+
+val fonts = FontFamily(
+    Font(R.font.poppins_regular),
+    Font(R.font.poppins_bold, weight = FontWeight.Bold),
+    Font(R.font.poppins_extra_bold, weight = FontWeight.ExtraBold),
+    Font(R.font.poppins_black, weight = FontWeight.Black)
+)
+
 val Typography = Typography(
+    body1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        color = Color.White,
+        fontSize = 14.sp
+    ),
+    h1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.ExtraBold,
+        color = Color.White,
+        fontSize = 20.sp
+    ),
+
+    h3 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Bold,
+        color = Color.White,
+        fontSize = 20.sp
+    ),
+
     h6 = TextStyle(
         fontSize = 16.sp,
-        fontFamily = afont,
+        fontFamily = fonts,
         fontWeight = FontWeight.Normal,
         color = Color.White
 
-),
+    ),
     subtitle2 = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontFamily = abfont,
+        fontFamily = fonts,
         fontSize = 20.sp,
         color = Color.White
     ),
 // Set of Material typography styles to start with
 
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
 
     /* Other default text styles to override
     button = TextStyle(

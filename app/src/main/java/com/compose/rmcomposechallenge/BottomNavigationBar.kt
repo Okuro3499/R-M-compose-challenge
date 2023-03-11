@@ -15,11 +15,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 @Composable
 fun BottomNavigationBar(
     //takes parameters to be displayed(items;icon, name and the route) which are wrapped in a data class
-    items:List<BottomNavItem>,
+    items: List<BottomNavItem>,
     navController: NavController,
     modifier: Modifier = Modifier,
-    onItemClick:(BottomNavItem) -> Unit
-){
+    onItemClick: (BottomNavItem) -> Unit
+) {
     val backStackEntry = navController.currentBackStackEntryAsState()
     BottomNavigation(
         modifier = modifier,
@@ -35,12 +35,12 @@ fun BottomNavigationBar(
                 unselectedContentColor = Color.Gray,
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        if (item.badgeCount > 0){
+                        if (item.badgeCount > 0) {
 
                             BadgedBox(
-                                badge= {
+                                badge = {
 
-                                    Text(text = item.badgeCount.toString(),)
+                                    Text(text = item.badgeCount.toString())
 
                                 }
                             )
@@ -49,37 +49,24 @@ fun BottomNavigationBar(
                                     imageVector = item.icon,
                                     contentDescription = item.name
                                 )
-
                             }
-
-
-
-                        }
-                        else{
+                        } else {
                             Icon(
                                 imageVector = item.icon,
                                 contentDescription = item.name
                             )
                         }
 
-                        if (selected){
+                        if (selected) {
                             Text(
                                 text = item.name,
                                 textAlign = TextAlign.Center,
                                 fontSize = 12.sp
-
                             )
-
                         }
-
                     }
-
                 }
             )
-
-
         }
-
     }
-
 }

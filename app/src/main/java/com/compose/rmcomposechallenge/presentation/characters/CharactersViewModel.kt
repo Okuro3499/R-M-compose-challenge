@@ -1,6 +1,5 @@
 package com.compose.rmcomposechallenge.presentation.characters
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -15,33 +14,31 @@ import javax.inject.Inject
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharacters
-):ViewModel() {
+) : ViewModel() {
 
     private val _state = mutableStateOf(CharacterState())
-    val state:State<CharacterState> get() = _state
+    val state: State<CharacterState> get() = _state
 
     init {
         showAllCharacters()
     }
 
     private fun showAllCharacters() {
-        getAllCharacters().onEach {result ->
-           when(result) {
-               is ResultWrapper.success -> {
+        getAllCharacters().onEach { result ->
+            when (result) {
+                is ResultWrapper.success -> {
                     _state.value = state.value.copy(
                         characters = result.value,
                         error = null
                     )
-               }
-               is ResultWrapper.failure -> {
-                    _state.value= state.value.copy(
+                }
+                is ResultWrapper.failure -> {
+                    _state.value = state.value.copy(
                         characters = null,
                         error = result.exception.toString()
                     )
-               }
-           }
+                }
+            }
         }.launchIn(viewModelScope)
     }
-
-
 }
