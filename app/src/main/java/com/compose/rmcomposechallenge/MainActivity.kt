@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.magnifier
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
@@ -15,17 +15,12 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.compose.rmcomposechallenge.presentation.characters.CharactersViewModel
 import com.compose.rmcomposechallenge.presentation.characters.HomeScreen
 import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
@@ -40,7 +35,7 @@ class MainActivity : ComponentActivity() {
             RMcomposechallengeTheme {
                 val navController = rememberNavController()
                 Scaffold(
-                    bottomBar ={
+                    bottomBar = {
                         BottomNavigationBar(
                             items = listOf(
                                 BottomNavItem(
@@ -50,7 +45,7 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 BottomNavItem(
                                     name = "Files",
-                                    route =Screens.MyFilesScreen.route,
+                                    route = Screens.MyFilesScreen.route,
                                     icon = Icons.Default.List,
                                     badgeCount = 56
                                 ),
@@ -59,9 +54,9 @@ class MainActivity : ComponentActivity() {
                                     route = Screens.AboutScreen.route,
                                     icon = Icons.Default.Settings
                                 )
-                            ) ,
+                            ),
                             navController = navController,
-                            onItemClick ={
+                            onItemClick = {
                                 navController.navigate(it.route)
                             }
                         )
@@ -77,17 +72,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Navigation(navController:NavHostController){
-    NavHost(navController = navController, startDestination = Screens.HomeScreen.route){
-        composable(Screens.HomeScreen.route){
+fun Navigation(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = Screens.HomeScreen.route) {
+        composable(Screens.HomeScreen.route) {
             HomeScreen()
 
         }
-        composable(Screens.MyFilesScreen.route){
+        composable(Screens.MyFilesScreen.route) {
             MyFilesScreen()
 
         }
-        composable(Screens.AboutScreen.route){
+        composable(Screens.AboutScreen.route) {
             AboutScreen()
 
         }
@@ -97,10 +92,8 @@ fun Navigation(navController:NavHostController){
 }
 
 
-
-
 @Composable
-fun MyFilesScreen(){
+fun MyFilesScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -109,48 +102,55 @@ fun MyFilesScreen(){
     ) {
         Text(text = "Downloaded files")
 
-        }
-
     }
 
+}
+
 @Composable
-fun AboutScreen(){
+fun AboutScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(BlackBackground),
         contentAlignment = Alignment.Center
     ) {
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
         ) {
-            Text(stringResource(id = R.string.created),
+            Text(
+                stringResource(id = R.string.created),
                 style = MaterialTheme.typography.subtitle2
             )
-            Text(stringResource(id = R.string.gideon),
+            Text(
+                stringResource(id = R.string.gideon),
                 style = MaterialTheme.typography.h6
 
 
             )
-            Text(stringResource(id = R.string.Dan),
+            Text(
+                stringResource(id = R.string.Dan),
                 style = MaterialTheme.typography.h6
             )
-            Text(stringResource(id = R.string.Anwar),
+            Text(
+                stringResource(id = R.string.Anwar),
                 style = MaterialTheme.typography.h6
             )
-            Text(stringResource(id = R.string.Abdul),
+            Text(
+                stringResource(id = R.string.Abdul),
                 style = MaterialTheme.typography.h6
             )
-            
+
             Spacer(modifier = Modifier.height(15.dp))
-            Text(stringResource(id = R.string.Api),
+            Text(
+                stringResource(id = R.string.Api),
                 style = MaterialTheme.typography.subtitle2
             )
-            Text(stringResource(id = R.string.api),
+            Text(
+                stringResource(id = R.string.api),
                 style = MaterialTheme.typography.h6
             )
-
 
 
         }

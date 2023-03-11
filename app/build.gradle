@@ -69,6 +69,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     implementation 'com.google.firebase:firebase-crashlytics:18.3.5'
     implementation 'com.google.firebase:firebase-analytics:21.2.0'
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.3'
     kapt "com.google.dagger:hilt-compiler:2.42"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
