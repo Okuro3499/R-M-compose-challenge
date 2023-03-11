@@ -44,16 +44,14 @@ class MainActivity : ComponentActivity() {
                             items = listOf(
                                 BottomNavItem(
                                     name = "Characters",
-                                    route =Screens.CharactersScreen.route,
-                                    icon = Icons.Default.Home,
-
-                                    ),
-                                BottomNavItem(
-                                    name = "Saved Files",
                                     route = Screens.SavedCharactersScreen.route,
                                     icon = Icons.Default.List,
-                                    badgeCount = 56
                                 ),
+                                BottomNavItem(
+                                    name = "Home",
+                                    route =Screens.CharactersScreen.route,
+                                    icon = Icons.Default.Home,
+                                    ),
                                 BottomNavItem(
                                     name = "About",
                                     route = Screens.AboutScreen.route,
@@ -100,13 +98,7 @@ fun Navigation(navController:NavHostController){
         }
     }
 
-
 }
-
-
-
-
-
 
 @Composable
 fun AboutScreen(){
