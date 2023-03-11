@@ -9,13 +9,13 @@ Overall, Rick and Morty app is a fun and engaging way for fans of the show to st
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/j54gV3b4/Screenshot-20230311-171913-RMcomposechallenge-google-pixel4-justblack-portrait.png)
+[![Screenshot-20230311-171913-RMcomposechallenge-google-pixel4-justblack-portrait.png](https://i.postimg.cc/j54gV3b4/Screenshot-20230311-171913-RMcomposechallenge-google-pixel4-justblack-portrait.png)](https://postimg.cc/qhgXyLgN)
 
-![App Screenshot](https://i.postimg.cc/HLp8Z66g/Screenshot-20230311-171920-RMcomposechallenge-google-pixel4-justblack-portrait.png)
+[![Screenshot-20230311-171920-RMcomposechallenge-google-pixel4-justblack-portrait.png](https://i.postimg.cc/HLp8Z66g/Screenshot-20230311-171920-RMcomposechallenge-google-pixel4-justblack-portrait.png)](https://postimg.cc/pm6dyJNG)
 
-![App Screenshot](https://i.postimg.cc/nzmsMNzq/Screenshot-20230311-171933-RMcomposechallenge-google-pixel4-justblack-portrait.png)
+[![Screenshot-20230311-171933-RMcomposechallenge-google-pixel4-justblack-portrait.png](https://i.postimg.cc/nzmsMNzq/Screenshot-20230311-171933-RMcomposechallenge-google-pixel4-justblack-portrait.png)](https://postimg.cc/HcpWhZbL)
 
-![App Screenshot](https://i.postimg.cc/43Nb74kV/Screenshot-20230311-171927-RMcomposechallenge-google-pixel4-justblack-portrait.png)
+[![Screenshot-20230311-171927-RMcomposechallenge-google-pixel4-justblack-portrait.png](https://i.postimg.cc/43Nb74kV/Screenshot-20230311-171927-RMcomposechallenge-google-pixel4-justblack-portrait.png)](https://postimg.cc/G4Vs6Cpm)
 
 # Installation
 ## Prerequisites
