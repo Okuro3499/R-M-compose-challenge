@@ -39,6 +39,8 @@ class CharactersViewModel @Inject constructor(
                         error = result.exception.toString()
                     )
                }
+
+               ResultWrapper.Loading -> TODO()
            }
         }.launchIn(viewModelScope)
     }

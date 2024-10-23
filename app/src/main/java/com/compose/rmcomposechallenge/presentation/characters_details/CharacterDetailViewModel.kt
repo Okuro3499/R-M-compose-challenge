@@ -43,6 +43,8 @@ class CharacterDetailViewModel @Inject constructor(
                                 error = results.exception.toString()
                             )
                         }
+
+                        ResultWrapper.Loading -> TODO()
                     }
                 }
         }
