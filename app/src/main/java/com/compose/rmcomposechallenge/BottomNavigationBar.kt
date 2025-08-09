@@ -36,12 +36,9 @@ fun BottomNavigationBar(
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if (item.badgeCount > 0){
-
                             BadgedBox(
                                 badge= {
-
                                     Text(text = item.badgeCount.toString(),)
-
                                 }
                             )
                             {
@@ -49,11 +46,7 @@ fun BottomNavigationBar(
                                     imageVector = item.icon,
                                     contentDescription = item.name
                                 )
-
                             }
-
-
-
                         }
                         else{
                             Icon(
@@ -67,19 +60,11 @@ fun BottomNavigationBar(
                                 text = item.name,
                                 textAlign = TextAlign.Center,
                                 fontSize = 12.sp
-
                             )
-
                         }
-
                     }
-
                 }
             )
-
-
         }
-
     }
-
 }

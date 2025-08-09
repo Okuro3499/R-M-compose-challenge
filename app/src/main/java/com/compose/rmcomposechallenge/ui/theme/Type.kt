@@ -9,31 +9,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.compose.rmcomposechallenge.R
 
-
 val abfont = FontFamily(
-    listOf(
-        Font(R.font.boldaboutfont)
-    )
+    listOf(Font(R.font.boldaboutfont))
 )
-
 
 val afont = FontFamily(
-    listOf(
-        Font(R.font.aboutfont)
-
-    )
+    listOf(Font(R.font.aboutfont))
 )
+
 val Typography = Typography(
     h6 = TextStyle(
         fontSize = 16.sp,
         fontFamily = afont,
         fontWeight = FontWeight.Normal,
         color = Color.White
-
-),
-
-
-
+    ),
     subtitle2 = TextStyle(
         fontWeight = FontWeight.Bold,
         fontFamily = abfont,
@@ -47,12 +37,12 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     ),
-     h4 =  TextStyle(
-         fontSize = 18.sp,
-         fontFamily = afont,
-         fontWeight = FontWeight.Bold,
-         color = Color.White
-)
+    h4 =  TextStyle(
+        fontSize = 18.sp,
+        fontFamily = afont,
+        fontWeight = FontWeight.Bold,
+        color = Color.White
+    )
     /* Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,

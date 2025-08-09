@@ -32,10 +32,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun RMcomposechallengeTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
+fun RMcomposechallengeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     TransparentSystemBars()
 
     val colors = if (darkTheme) {
@@ -49,6 +46,5 @@ fun RMcomposechallengeTheme(
         typography = Typography,
         shapes = Shapes,
         content = content,
-
     )
 }

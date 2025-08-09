@@ -29,10 +29,8 @@ import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 import com.compose.rmcomposechallenge.ui.theme.RMcomposechallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -79,25 +77,18 @@ fun Navigation(navController:NavHostController){
     NavHost(navController = navController, startDestination = Screens.CharactersScreen.route){
         composable(Screens.SavedCharactersScreen.route){
             HomeScreen(navController = navController)
-
         }
         composable(Screens.CharactersScreen.route){
             CharactersScreen(navController = navController)
-
         }
-
         composable(Screens.AboutScreen.route) {
             AboutScreen()
         }
-
         composable(Screens.CharacterDetailScreen.route + "/{characterId}") {
             val viewModel = hiltViewModel<CharacterDetailViewModel>()
-            CharacterDetailScreen(
-                 navController = navController
-            )
+            CharacterDetailScreen(navController = navController)
         }
     }
-
 }
 
 @Composable
@@ -112,32 +103,36 @@ fun AboutScreen(){
             .fillMaxSize()
             .padding(20.dp)
         ) {
-            Text(stringResource(id = R.string.created),
+            Text(
+                stringResource(id = R.string.created),
                 style = MaterialTheme.typography.subtitle2
             )
-            Text(stringResource(id = R.string.gideon),
-                style = MaterialTheme.typography.h6
-
-
-            )
-            Text(stringResource(id = R.string.Dan),
+            Text(
+                stringResource(id = R.string.gideon),
                 style = MaterialTheme.typography.h6
             )
-            Text(stringResource(id = R.string.Anwar),
+            Text(
+                stringResource(id = R.string.Dan),
                 style = MaterialTheme.typography.h6
             )
-            Text(stringResource(id = R.string.Abdul),
+            Text(
+                stringResource(id = R.string.Anwar),
+                style = MaterialTheme.typography.h6
+            )
+            Text(
+                stringResource(id = R.string.Abdul),
                 style = MaterialTheme.typography.h6
             )
             
             Spacer(modifier = Modifier.height(15.dp))
-            Text(stringResource(id = R.string.Api),
+            Text(
+                stringResource(id = R.string.Api),
                 style = MaterialTheme.typography.subtitle2
             )
-            Text(stringResource(id = R.string.api),
+            Text(
+                stringResource(id = R.string.api),
                 style = MaterialTheme.typography.h6
             )
         }
     }
 }
-

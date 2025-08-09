@@ -26,35 +26,25 @@ import com.compose.rmcomposechallenge.domain.models.Result
 import com.compose.rmcomposechallenge.ui.theme.BlackBackground
 
 @Composable
-fun HomeScreen(
-    navController: NavController
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BlackBackground),
+fun HomeScreen(navController: NavController) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(BlackBackground),
         contentAlignment = Alignment.Center
     ) {
-
         val viewModel: CharactersViewModel = hiltViewModel()
-
         val state = viewModel.state.value
 
         LazyColumn {
             state.characters?.results?.let {
                 items(it.size) { i ->
                     val character = it[i]
-                    RickAndMortyCharacter(
-                        character,
-                        navController
-                    )
-
+                    RickAndMortyCharacter(character, navController)
                 }
             }
         }
     }
 }
-
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

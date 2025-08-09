@@ -14,10 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterDetailViewModel @Inject constructor(
-    private val getCharacterDetails: GetCharacterDetails,
-    savedStateHandle: SavedStateHandle
-): ViewModel(){
-    private val _state = mutableStateOf(CharacterDetailState())
+    private val getCharacterDetails: GetCharacterDetails, savedStateHandle: SavedStateHandle): ViewModel() {
+        private val _state = mutableStateOf(CharacterDetailState())
     val state: State<CharacterDetailState> get() = _state
 
     init {
@@ -28,26 +26,23 @@ class CharacterDetailViewModel @Inject constructor(
 
     fun showCharacterDetails(id: Int) {
         viewModelScope.launch {
-            getCharacterDetails(id)
-                .collect { results ->
-                    when(results) {
-                        is ResultWrapper.success -> {
-                            _state.value = state.value.copy(
-                                character = results.value ?: null,
-                                error = null
-                            )
-                        }
-                        is ResultWrapper.failure -> {
-                            _state.value = state.value.copy(
-                                character = null,
-                                error = results.exception.toString()
-                            )
-                        }
-
-                        ResultWrapper.Loading -> TODO()
+            getCharacterDetails(id).collect { results ->
+                when(results) {
+                    is ResultWrapper.success -> {
+                        _state.value = state.value.copy(
+                            character = results.value,
+                            error = null
+                        )
                     }
+                    is ResultWrapper.failure -> {
+                        _state.value = state.value.copy(
+                            character = null,
+                            error = results.exception.toString()
+                        )
+                    }
+                    ResultWrapper.Loading -> TODO()
                 }
+            }
         }
     }
-
 }
